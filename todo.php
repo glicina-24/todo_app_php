@@ -8,6 +8,8 @@ if (!isset($_SESSION['todos'])) {
 
 require_once 'actions.php';
 
+$view       = $_GET['view'] ?? 'list';
+$month      = preg_match('/^\d{4}-\d{2}$/', $_GET['month'] ?? '') ? $_GET['month'] : date('Y-m');
 $filter     = $_GET['filter'] ?? 'all';
 $todos_all  = $_SESSION['todos'];
 $total      = count($todos_all);
@@ -37,9 +39,19 @@ $todos = array_reverse($todos);
     <div class="header-title">TODO</div>
     <div class="header-sub">タスク管理</div>
   </div>
-  <?php include 'views/stats.php'; ?>
-  <?php include 'views/form.php'; ?>
-  <?php include 'views/list.php'; ?>
+
+  <div class="view-tabs">
+    <a href="todo.php" class="view-tab <?= $view === 'list' ? 'active' : '' ?>">LIST</a>
+    <a href="todo.php?view=calendar&month=<?= $month ?>" class="view-tab <?= $view === 'calendar' ? 'active' : '' ?>">CALENDAR</a>
+  </div>
+
+  <?php if ($view === 'calendar'): ?>
+    <?php include 'views/calendar.php'; ?>
+  <?php else: ?>
+    <?php include 'views/stats.php'; ?>
+    <?php include 'views/form.php'; ?>
+    <?php include 'views/list.php'; ?>
+  <?php endif; ?>
 </div>
 <?php include 'views/edit_modal.php'; ?>
 </body>
