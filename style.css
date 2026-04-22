@@ -3,12 +3,12 @@
 :root {
   --bg: #0d0d0d;
   --surface: #161616;
-  --border: #2a2a2a;
+  --border: #383838;
   --accent: #e8ff00;
   --accent2: #ff4d4d;
   --text: #f0f0f0;
-  --muted: #555;
-  --done-text: #3a3a3a;
+  --muted: #909090;
+  --done-text: #666;
   --priority-high: #ff4d4d;
   --priority-medium: #e8ff00;
   --priority-low: #4d9fff;
@@ -317,7 +317,7 @@ body {
 .empty-icon {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
-  color: #222;
+  color: #444;
   display: block;
   margin-bottom: 8px;
 }
